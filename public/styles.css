@@ -1,0 +1,242 @@
+:root {
+  --bg: #f9fbff;
+  --text: #1f2640;
+  --accent: #ff4f8b;
+  --accent-2: #5c6cff;
+  --card: rgba(255, 255, 255, 0.88);
+  --border: rgba(92, 108, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(rgba(249, 251, 255, 0.8), rgba(249, 251, 255, 0.86)),
+    url("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=2000&q=80")
+      center / cover fixed no-repeat,
+    radial-gradient(circle at 20% 15%, #fff7d6, transparent 30%),
+    radial-gradient(circle at 85% 80%, #d6fff8, transparent 25%), var(--bg);
+  min-height: 100vh;
+}
+
+.bg-illustration {
+  position: fixed;
+  z-index: -1;
+  border-radius: 45% 55% 60% 40% / 50% 35% 65% 50%;
+  filter: blur(2px);
+  opacity: 0.6;
+}
+
+.bg-1 {
+  width: 380px;
+  height: 380px;
+  background: linear-gradient(135deg, #ff8ec0, #ffc06b);
+  top: -90px;
+  left: -70px;
+}
+
+.bg-2 {
+  width: 440px;
+  height: 440px;
+  background: linear-gradient(135deg, #71e3ff, #5f84ff);
+  right: -130px;
+  top: 22%;
+}
+
+.bg-3 {
+  width: 360px;
+  height: 360px;
+  background: linear-gradient(135deg, #98f59a, #6de4ff);
+  left: 35%;
+  bottom: -120px;
+}
+
+.section {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 2.5rem 0;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.8rem;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  line-height: 1.15;
+}
+
+.lead {
+  color: #3c4776;
+  max-width: 720px;
+}
+
+.chip {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.92rem;
+}
+
+.hero-grid,
+.split {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero-grid > .card {
+  margin-top: 2.2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.1rem;
+  backdrop-filter: blur(5px);
+}
+
+.card-photo {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 0.75rem;
+}
+
+.card.soft {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.price .amount {
+  margin: 0.3rem 0 0.75rem;
+  font-size: 1.7rem;
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), #ff8f5f);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-small {
+  padding: 0.55rem 0.8rem;
+}
+
+.btn-ghost {
+  background: #fff;
+  color: var(--accent-2);
+  border: 1px solid var(--border);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.form .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  border: 1px solid #cfd5ff;
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+}
+
+.status {
+  min-height: 1.1rem;
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.status.ok {
+  color: #117a3d;
+}
+
+.status.err {
+  color: #b32727;
+}
+
+.footer {
+  text-align: center;
+  color: #4a568a;
+}
+
+.footer a {
+  color: inherit;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+}
+
+.gallery img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 25px rgba(60, 71, 118, 0.15);
+}
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .split,
+  .grid-3,
+  .form .form-grid,
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
