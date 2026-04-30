@@ -47,10 +47,22 @@ async function submitViaEmailFallback(payload) {
     headers: { Accept: "application/json" },
     body: fallbackData
   });
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    throw new Error(
+      "Email-сервис вернул неожиданный ответ. Проверьте подтверждение почты в FormSubmit."
+    );
+  }
 
-  const result = await response.json();
+  let result;
+  try {
+    result = await response.json();
+  } catch (_) {
+    throw new Error("Не удалось прочитать ответ email-сервиса.");
+  }
+
   if (!response.ok || result.success !== "true") {
-    throw new Error("Не удалось отправить заявку через email-сервис.");
+    throw new Error(result.message || "Не удалось отправить заявку через email-сервис.");
   }
 }
 
