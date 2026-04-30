@@ -4,12 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Тигра — Детские праздники в Казани</title>
-    <meta http-equiv="refresh" content="0; url=./public/index.html" />
     <script>
-      window.location.replace("./public/index.html");
+      async function redirectToSite() {
+        const candidates = ["./public/index.html", "./Public/index.html"];
+        for (const url of candidates) {
+          try {
+            const response = await fetch(url, { method: "HEAD" });
+            if (response.ok) {
+              window.location.replace(url);
+              return;
+            }
+          } catch (_) {}
+        }
+      }
+      redirectToSite();
     </script>
   </head>
   <body>
-    <p>Переходим на сайт... Если не открылось автоматически, нажмите <a href="./public/index.html">сюда</a>.</p>
+    <p>
+      Переходим на сайт... Если не открылось автоматически, попробуйте
+      <a href="./public/index.html">public</a>
+      или
+      <a href="./Public/index.html">Public</a>.
+    </p>
   </body>
 </html>
