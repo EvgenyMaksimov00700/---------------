@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Тигра — Детские праздники в Казани</title>
-    <meta http-equiv="refresh" content="0; url=./public/index.html" />
     <script>
       async function redirectToSite() {
         const candidates = ["./public/index.html", "./Public/index.html"];
+        if (window.location.protocol === "file:") {
+          window.location.replace(candidates[0]);
+          return;
+        }
         for (const url of candidates) {
           try {
             const response = await fetch(url, { method: "HEAD" });
@@ -17,11 +20,8 @@
             }
           } catch (_) {}
         }
-        const status = document.getElementById("redirectStatus");
-        if (status) {
-          status.textContent =
-            "Не удалось открыть сайт автоматически. Перейдите по одной из ссылок ниже.";
-        }
+        // Fallback: still attempt redirect even when HEAD checks fail (e.g. file:// or network issues).
+        window.location.replace(candidates[0]);
       }
       redirectToSite();
     </script>
@@ -40,6 +40,7 @@
         или
         <a href="./Public/index.html">Public</a>.
       </p>
+      <meta http-equiv="refresh" content="0; url=./public/index.html" />
     </noscript>
   </body>
 </html>

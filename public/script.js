@@ -15,6 +15,12 @@ form.addEventListener("submit", async (event) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
+    const contentType = response.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) {
+      throw new Error(
+        "Форма на GitHub Pages не может отправляться: API /api/requests недоступен. Запустите сайт через Node.js сервер."
+      );
+    }
 
     const result = await response.json();
     if (!response.ok || !result.ok) {
