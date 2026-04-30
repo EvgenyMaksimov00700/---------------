@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Тигра — Детские праздники в Казани</title>
+    <meta http-equiv="refresh" content="0; url=./public/index.html" />
     <script>
       async function redirectToSite() {
         const candidates = ["./public/index.html", "./Public/index.html"];
@@ -16,16 +17,29 @@
             }
           } catch (_) {}
         }
+        const status = document.getElementById("redirectStatus");
+        if (status) {
+          status.textContent =
+            "Не удалось открыть сайт автоматически. Перейдите по одной из ссылок ниже.";
+        }
       }
       redirectToSite();
     </script>
   </head>
   <body>
-    <p>
+    <p id="redirectStatus">
       Переходим на сайт... Если не открылось автоматически, попробуйте
       <a href="./public/index.html">public</a>
       или
       <a href="./Public/index.html">Public</a>.
     </p>
+    <noscript>
+      <p>
+        JavaScript отключен. Автопереход может не сработать; откройте
+        <a href="./public/index.html">public</a>
+        или
+        <a href="./Public/index.html">Public</a>.
+      </p>
+    </noscript>
   </body>
 </html>
